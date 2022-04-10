@@ -1,7 +1,7 @@
 import { qs, qsa } from './utils/dom/index.js'
 import { updateCount, resetCount } from './utils/counting.js'
 import { APP_CONFIG } from './config.js'
-import { themeMode, setThemeMode } from './themeMode.js'
+import { setThemeMode, betterChangeThemeMode } from './themeMode.js'
 
 const result = qs(".result-container p")
 const changeThemeMode = qs('.theme-container h1')
@@ -31,5 +31,5 @@ reset.addEventListener("click", () => resetCount({
   startCount: START_COUNT
 }))
 
-themeMode({ selector: changeThemeMode })
+betterChangeThemeMode({ selector: changeThemeMode })
 setThemeMode({ selector: changeThemeMode})

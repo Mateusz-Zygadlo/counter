@@ -1,42 +1,5 @@
 import { hasClass } from './utils/css/index.js'
-import { toggleClass, removeClass } from './utils/css/index.js'
-
-function inLocalStorage(key) {
-  return localStorage.getItem(key)
-}
-
-function changeText({ selector, title }) {
-  return selector.innerText = title
-}
-
-export function themeMode({ selector }) {
-  if(window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    if(inLocalStorage('theme-mode')) {
-      if(localStorage.getItem('theme-mode') == 'light-mode') {
-        changeText({ selector, text: 'change to dark mode' })
-        return removeClass({ selector: document.body, name: 'dark-mode' })
-      }
-      changeText({ selector, text: 'change to light mode' })
-      return toggleClass({ selector: document.body, name: 'dark-mode' })
-    } 
-    
-    localStorage.setItem('theme-mode', 'dark-mode')
-    changeText({ selector, text: 'change to light mode' })
-    return toggleClass({ selector: document.body, name: 'dark-mode' })
-  } else {
-    if(localStorage.getItem('theme-mode')) {
-      if(localStorage.getItem('theme-mode') == 'light-mode') {
-        changeText({ selector, text: 'change to dark mode' })
-        return removeClass({ selector: document.body, name: 'dark-mode' })
-      }
-    
-      changeText({ selector, name: 'change to light mode' })
-      return toggleClass({ selector: document.body, name: 'dark-mode' })
-    } else {
-      localStorage.setItem('theme-mode', 'light-mode')
-    }
-  }
-}
+import { toggleClass } from './utils/css/index.js'
 
 export function setThemeMode({ selector }) {
   selector.addEventListener('click', () => {
@@ -45,4 +8,26 @@ export function setThemeMode({ selector }) {
     document.body.classList.toggle('dark-mode')
     localStorage.setItem('theme-mode', isDarkMode ? 'light-mode' : 'dark-mode')
   })
+}
+
+export function betterChangeThemeMode({ selector }) {
+  const isDarkModeInSystem = window.matchMedia('(prefers-color-scheme: dark)').matches
+  const getThemeModeFromLocalStorage = localStorage.getItem('theme-mode')
+
+  if(isDarkModeInSystem && getThemeModeFromLocalStorage) {
+    toggleClass({ selector: document.body, name: getThemeModeFromLocalStorage == 'dark-mode' ? 'dark-mode' : undefined })
+  } else if(isDarkModeInSystem && !getThemeModeFromLocalStorage) {
+    localStorage.setItem('theme-mode', 'dark-mode')
+  } else if(!isDarkModeInSystem && getThemeModeFromLocalStorage) {
+    toggleClass({ selector: document.body, name: getThemeModeFromLocal == 'dark-mode' ? 'dark-mode' : undefined})
+  } else {
+    localStorage.setItem('theme-mode', 'light-mode')
+  }
+
+  changeThemeText({ selector })
+}
+
+export function changeThemeText({ selector }) {
+  const getThemeMode = localStorage.getItem('theme-mode')
+  return selector.innerText = `change to ${getThemeMode === 'light-mode' ? 'dark-mode' : 'light-mode'}`
 }
