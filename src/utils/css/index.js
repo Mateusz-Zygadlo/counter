@@ -27,3 +27,7 @@ export function removeClass({ selector, name }) {
 export function addClass({ selector, name }) {
   return selector.classList.add(name)
 }
+
+export function toggleClass({ selector, name }) {
+  return selector.classList.toggle(name)
+}

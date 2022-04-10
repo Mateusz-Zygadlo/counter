@@ -1,8 +1,10 @@
 import { qs, qsa } from './utils/dom/index.js'
 import { updateCount, resetCount } from './utils/counting.js'
 import { APP_CONFIG } from './config.js'
+import { themeMode, setThemeMode } from './themeMode.js'
 
 const result = qs(".result-container p")
+const changeThemeMode = qs('.theme-container h1')
 const [decrement, reset, increment] = qsa(".buttons-container button")
 const { OPERATORS: { PLUS, MINUS }, ADDING, START_COUNT } = APP_CONFIG
 
@@ -28,3 +30,6 @@ reset.addEventListener("click", () => resetCount({
   selector: result,
   startCount: START_COUNT
 }))
+
+themeMode({ selector: changeThemeMode })
+setThemeMode({ selector: changeThemeMode})

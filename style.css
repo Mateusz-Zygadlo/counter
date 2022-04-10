@@ -2,6 +2,17 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  user-select: none;
+}
+
+:root {
+  --smaller: red;
+  --button-border-color: black;
+  --button-hover-color: rgb(255, 213, 213);
+  --button-focus-color: rgb(146, 221, 185);
+  --text-color: black;
+  --background-color: white;
+  --background-color-button: white;
 }
 
 body {
@@ -11,6 +22,25 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+body.dark-mode {
+  --text-color: rgba(255, 255, 255, 0.8);
+  --background-color: rgb(21, 21, 21);
+  --button-focus-color: lightblue;
+  --background-color-button: rgba(255, 255, 255, 0.67);
+}
+
+.theme-container {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+}
+
+.theme-container h1 {
+  cursor: pointer;
 }
 
 .result-container {
@@ -20,7 +50,7 @@ body {
 }
 
 .result-container h1, .result-container p {
-  font-size: 40px;
+  font-size: 50px;
   font-weight: bold;
 }
 
@@ -29,28 +59,28 @@ body {
 }
 
 .result-container p.smaller {
-  color: red;
+  color: var(--smaller);
 }
 
 .buttons-container {
-  margin-top: 10px;
+  margin-top: 20px;
   position: relative;
 }
 
 .buttons-container button {
-  padding: 2px 5px;
+  padding: 3px 5px;
   margin: 0 4px;
-  background: none;
-  border: 1px solid black;
+  background: var(--background-color-button);
+  border: 1px solid var(--button-border-color);
   cursor: pointer;
-  transition: all 0.3s linear;
+  transition: background 0.3s linear;
+  font-size: 20px;
 }
 
 .buttons-container button:hover {
-  background-color: rgb(255, 213, 213);
+  background-color: var(--button-hover-color);
 }
 
 .buttons-container button:focus {
-  background-color: rgb(82, 14, 70);
-  color: white;
+  background-color: var(--button-focus-color);
 }
