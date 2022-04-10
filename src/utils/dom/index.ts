@@ -1,7 +1,7 @@
-export function qs(selectors: any) {
+export function qs(selectors: string): Element | null {
   return document.querySelector(selectors)
 }
 
-export function qsa(selectors: any) {
+export function qsa(selectors: string): Element[] {
   return [...document.querySelectorAll(selectors)]
 }
