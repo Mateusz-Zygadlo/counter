@@ -1,6 +1,6 @@
-import { hasClass } from './utils/css/index'
-import { toggleClass, addClass } from './utils/css/index'
-import { APP_CONFIG } from './config'
+import { hasClass } from './utils/css/index.js'
+import { toggleClass, addClass } from './utils/css/index.js'
+import { APP_CONFIG } from './config.js'
 
 export function setListenerForThemeMode({ selector }: { selector: HTMLElement}): void {
   const { THEMES: { DARK_MODE, LIGHT_MODE }, THEME_MODE } = APP_CONFIG

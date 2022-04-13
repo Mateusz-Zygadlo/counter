@@ -5,10 +5,12 @@ export function updateCount({ operator, actualCount, selector, adding }) {
     switch (operator) {
         case PLUS:
             selector.innerText = `${actualCount + adding}`;
+            localStorage.setItem('count', `${actualCount + adding}`);
             checkClass({ selector, count: Number(selector.innerText) });
             break;
         case MINUS:
             selector.innerText = `${actualCount - adding}`;
+            localStorage.setItem('count', `${actualCount - adding}`);
             checkClass({ selector, count: Number(selector.innerText) });
             break;
         default:

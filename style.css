@@ -13,6 +13,18 @@
   --text-color: black;
   --background-color: white;
   --background-color-button: white;
+  --button-font-color: black;
+}
+
+body.dark-mode {
+  --text-color: white;
+  --background-color: black;
+  --button-focus-color: white;
+  --background-color-button: black;
+  --button-font-color: white;
+  --button-border-color: white;
+  --button-hover-color: rgb(42, 42, 42);
+  --button-focus-color: blue;
 }
 
 body {
@@ -26,20 +38,10 @@ body {
   color: var(--text-color);
 }
 
-body.dark-mode {
-  --text-color: rgba(255, 255, 255, 0.8);
-  --background-color: rgb(21, 21, 21);
-  --button-focus-color: lightblue;
-  --background-color-button: rgba(255, 255, 255, 0.67);
-}
-
-.theme-container {
+.change-theme {
   position: absolute;
   top: 5%;
-  right: 5%;
-}
-
-.theme-container h1 {
+  left: 5%;
   cursor: pointer;
 }
 
@@ -75,6 +77,7 @@ body.dark-mode {
   cursor: pointer;
   transition: background 0.3s linear;
   font-size: 20px;
+  color: var(--button-font-color);
 }
 
 .buttons-container button:hover {

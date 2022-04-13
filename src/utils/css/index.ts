@@ -1,4 +1,4 @@
-import { APP_CONFIG } from "../../config"
+import { APP_CONFIG } from "../../config.js"
 
 interface UtilsCssProps {
   selector: HTMLElement;
