@@ -3,6 +3,7 @@ import { updateCount, resetCount } from './utils/counting.js'
 import { APP_CONFIG } from './config.js'
 import { setListenerForThemeMode, changeThemeMode, changeMainTextForThemeSelect } from './themeMode.js'
 import { getCountFromLocalStorage } from './utils/getCountFromLocalStorage.js'
+import { checkClass } from './utils/css/index.js'
 
 const result = qs(".result-container p") as HTMLElement
 const themeMode = qs('.change-theme') as HTMLElement
@@ -13,6 +14,11 @@ getCountFromLocalStorage({ selector: result })
 changeThemeMode()
 changeMainTextForThemeSelect({ selector: themeMode })
 setListenerForThemeMode({ selector: themeMode})
+
+checkClass({
+  selector: result,
+  count: Number(result.innerText),
+})
 
 increment.addEventListener("click", (): void => {
   updateCount({

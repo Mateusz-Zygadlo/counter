@@ -19,5 +19,6 @@ export function updateCount({ operator, actualCount, selector, adding }) {
 }
 export function resetCount({ selector, startCount }) {
     selector.textContent = `${startCount}`;
+    localStorage.setItem('count', `${startCount}`);
     return checkClass({ selector, count: Number(selector.innerText) });
 }

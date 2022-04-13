@@ -34,5 +34,6 @@ interface ResetCountProps {
 
 export function resetCount({ selector, startCount }: ResetCountProps): void {
   selector.textContent = `${startCount}`
+  localStorage.setItem('count', `${startCount}`)
   return checkClass({ selector, count: Number(selector.innerText)})
 }
